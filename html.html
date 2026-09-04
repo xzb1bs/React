@@ -2,80 +2,29 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>JavaScript Refresher</title>
+  <title>JS Refresher</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <h1>Task 0 — JavaScript Refresher</h1>
+  <h1>JavaScript</h1>
 
-  <h2>1 — Variables and Data Types</h2>
-  <div class="box" id="out1"></div>
-  <div class="note">
-    <b>Ответы:</b><br>
-    let можно менять, const нельзя<br>
-    typeof null → "object" (баг JS)<br>
-    Примитивы: string, number, boolean, null, undefined, symbol, bigint
+  <div class="buttons">
+    <button onclick="showTask1()">1. Variables</button>
+    <button onclick="showTask2()">2. Arrays</button>
+    <button onclick="showTask3()">3. Arrays of Objects</button>
+    <button onclick="showTask4()">4. Objects</button>
+    <button onclick="showTask5()">5. Values & References</button>
+    <button onclick="showTask6()">6. Functions</button>
+    <button onclick="showTask7()">7. Functions as Values</button>
+    <button onclick="showTask8()">8. Scope</button>
+    <button onclick="showTask9()">9. Closure</button>
+    <button onclick="showTask10()">10. Spread / Rest</button>
+    <button onclick="showTask11()">11. Optional Chaining</button>
+    <button onclick="showFinal()">Final Task</button>
   </div>
 
-  <h2>2 — Arrays</h2>
-  <div class="box" id="out2"></div>
-
-  <h2>3 — Arrays of Objects</h2>
-  <div class="box" id="out3"></div>
-
-  <h2>4 — Objects</h2>
-  <div class="box" id="out4"></div>
-
-  <h2>5 — Values and References</h2>
-  <div class="box" id="out5"></div>
-  <div class="note">
-    copy = original → одна ссылка, меняется оригинал.<br>
-    Spread / Object.assign делает поверхностную копию.<br>
-    Вложенный объект нужно копировать отдельно.
-  </div>
-
-  <h2>6 — Functions</h2>
-  <div class="box" id="out6"></div>
-
-  <h2>7 — Functions as Values</h2>
-  <div class="box" id="out7"></div>
-  <div class="note">
-    Функции можно хранить в переменных и передавать в другие функции.<br>
-    add — сама функция, add() — её вызов.
-  </div>
-
-  <h2>8 — Scope</h2>
-  <div class="box" id="out8"></div>
-  <div class="note">
-    Global — видно везде.<br>
-    Function — только внутри функции.<br>
-    Block — let/const только внутри { }.<br>
-    var видна во всей функции, let/const — только в блоке.
-  </div>
-
-  <h2>9 — Closure</h2>
-  <div class="box" id="out9"></div>
-  <div class="note">
-    Внутренняя функция помнит переменные внешней — это замыкание.
-  </div>
-
-  <h2>10 — Destructuring, Spread and Rest</h2>
-  <div class="box" id="out10"></div>
-  <div class="note">
-    Spread — разворачивает.<br>
-    Rest — собирает оставшиеся значения в массив.
-  </div>
-
-  <h2>11 — Optional Chaining and ??</h2>
-  <div class="box" id="out11"></div>
-  <div class="note">
-    || считает пустыми: 0, "", false, null, undefined.<br>
-    ?? считает пустыми только null и undefined.
-  </div>
-
-  <h2>Final Task</h2>
-  <div class="box" id="outFinal"></div>
+  <div class="note" id="note"></div>
 
   <script src="script.js"></script>
 </body>
