@@ -1,13 +1,16 @@
 function show(text, note) {
   console.clear();
   console.log(text);
+  document.getElementById("output").textContent = text;
+
   if (note) {
+    let cleanNote = note.replace(/<br>/g, "\n").replace(/<[^>]+>/g, "");
     console.log("\n--- Примечание ---");
-    console.log(note.replace(/<br>/g, "\n").replace(/<[^>]+>/g, ""));
+    console.log(cleanNote);
+    document.getElementById("note").textContent = cleanNote;
   }
 }
 
-// ===== 1 =====
 function showTask1() {
   let name = "Aigerim";
   let age = 20;
@@ -30,7 +33,6 @@ function showTask1() {
   show(text, "Ответы:\n• let можно менять, const нельзя\n• typeof null → \"object\" (баг JS)\n• Примитивы: string, number, boolean, null, undefined, symbol, bigint");
 }
 
-// ===== 2 =====
 function showTask2() {
   let numbers = [3, 7, 2, 10, 5];
 
@@ -52,7 +54,6 @@ function showTask2() {
   show(text, "map, filter, find, reduce не меняют исходный массив");
 }
 
-// ===== 3 =====
 function showTask3() {
   let students = [
     { name: "Anna", id: 1, grade: 85 },
@@ -91,7 +92,6 @@ function showTask3() {
   show(text, "Оригинальные объекты не меняли");
 }
 
-// ===== 4 =====
 function showTask4() {
   let user = {
     id: 1,
@@ -116,7 +116,6 @@ function showTask4() {
   show(text, "Деструктуризация: берём name, age и city из объекта");
 }
 
-// ===== 5 =====
 function showTask5() {
   let original = { name: "Alice", score: 10 };
   let copy = original;
@@ -156,7 +155,6 @@ function showTask5() {
   show(text, "Обычный copy = original — одна ссылка. Вложенный объект нужно копировать отдельно.");
 }
 
-// ===== 6 =====
 function showTask6() {
   function isEven(number) {
     return number % 2 === 0;
@@ -189,7 +187,6 @@ function showTask6() {
   show(text, "Обычная function и function как переменная");
 }
 
-// ===== 7 =====
 function showTask7() {
   function add(a, b) { return a + b; }
   function multiply(a, b) { return a * b; }
@@ -204,7 +201,6 @@ function showTask7() {
   show(text, "• Функции можно хранить в переменных — да\n• Функции можно передавать в другие функции — да\n• add — сама функция, add() — её вызов");
 }
 
-// ===== 8 =====
 function showTask8() {
   let message = "global";
   let text = "";
@@ -231,7 +227,6 @@ function showTask8() {
   show(text, "Global — видно везде\nFunction — только внутри функции\nBlock — let/const только внутри { }\nvar видна во всей функции, let/const — только в блоке");
 }
 
-// ===== 9 =====
 function showTask9() {
   function createCounter() {
     let count = 0;
@@ -263,7 +258,6 @@ function showTask9() {
   show(text, "Внутренняя функция помнит переменные внешней — это замыкание (closure)");
 }
 
-// ===== 10 =====
 function showTask10() {
   let numbers2 = [10, 20, 30, 40];
   let first = numbers2[0];
@@ -299,7 +293,6 @@ function showTask10() {
   show(text, "Spread — разворачивает. Rest — собирает оставшиеся значения в массив.");
 }
 
-// ===== 11 =====
 function showTask11() {
   let userA = { name: "Bob", address: { city: "Almaty" } };
   let userB = { name: "Kate" };
@@ -326,7 +319,6 @@ function showTask11() {
   show(text, "|| считает пустыми 0, '', false, null, undefined.\n?? только null и undefined.");
 }
 
-// ===== FINAL =====
 function showFinal() {
   let allStudents = [
     { id: 1, name: "Anna", age: 20, grades: [85, 90, 78] },
