@@ -163,9 +163,7 @@ async function runEventLoopDemo() {
 
   actualOutput.textContent = output.join("\n");
 
-  eventLoopExplanation.textContent =
-    "Сначала выполняется стек вызовов: 1, 7, 8. Затем JavaScript обрабатывает микрозадачи: 2, 3, 4. И только после этого выполняются таймеры: 5, 6. Поэтому таймеры идут позже, хотя были запланированы раньше.";
-
+ 
   updateExecutionTime(0);
   updateMessage("Демонстрация Event Loop завершена. Проверьте вывод в блоке.");
 }
