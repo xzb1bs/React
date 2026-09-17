@@ -1,4 +1,4 @@
-const taskNames = ["Load Users", "Load Posts", "Load Comments"];
+const taskNames = ["Load Videos", "Load Likes", "Load Dislikes"];
 
 const taskList = document.getElementById("taskList");
 const resultMessage = document.getElementById("resultMessage");
