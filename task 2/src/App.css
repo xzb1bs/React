@@ -1,0 +1,145 @@
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f8fafc;
+  color: #1e293b;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+.header {
+  background: white;
+  padding: 50px 0 40px;
+  text-align: center;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.header img {
+  width: 280px;          /* ещё больше */
+  height: 280px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 8px solid #e2e8f0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin-bottom: 24px;
+}
+
+.header h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #0f172a;
+}
+
+.header p {
+  font-size: 1.15rem;
+  color: #64748b;
+}
+
+/* Sections */
+.section {
+  padding: 50px 0;
+}
+
+.section h2 {
+  font-size: 1.6rem;
+  margin-bottom: 18px;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.about-text {
+  font-size: 1.1rem;
+  color: #475569;
+  line-height: 1.7;
+}
+
+.about-text p {
+  margin-bottom: 14px;
+}
+
+/* Contact */
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: white;
+  padding: 18px 22px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.contact-item:hover {
+  border-color: #94a3b8;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+.contact-item span {
+  font-size: 1.5rem;
+}
+
+.contact-item strong {
+  display: block;
+  font-size: 1rem;
+  color: #0f172a;
+}
+
+.contact-item div div {
+  font-size: 0.95rem;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+/* Team photo */
+.team-photo {
+  margin-top: 10px;
+}
+
+.team-photo img {
+  width: 100%;
+  max-width: 700px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  display: block;
+}
+
+/* Footer */
+.footer {
+  margin-top: auto;
+  padding: 25px 0;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 0.9rem;
+  border-top: 1px solid #e2e8f0;
+  background: white;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .header img {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .header h1 {
+    font-size: 2rem;
+  }
+}

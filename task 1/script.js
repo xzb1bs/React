@@ -142,10 +142,12 @@ async function runEventLoopDemo() {
 
     console.log("1. Начало стека");
     setTimeout(() => console.log("5. Таймер 1"), 0);
-    setTimeout(() => console.log("6. Таймер 2"), 0);
+    setTimeout(() => {
+      console.log("6. Таймер 2");
+      // Promise.resolve().then(() => console.log("7. Promise 3"));
+    }, 0);
 
-    Promise.resolve().then(() => console.log("2. Promise 1"));
-    Promise.resolve().then(() => console.log("3. Promise 2"));
+   
 
     async function demo() {
       console.log("7. Функция started");
@@ -155,6 +157,9 @@ async function runEventLoopDemo() {
 
     demo();
     console.log("8. Конец стека");
+
+     Promise.resolve().then(() => console.log("2. Promise 1"));
+    Promise.resolve().then(() => console.log("3. Promise 2"));
 
     await new Promise((resolve) => setTimeout(resolve, 50));
   } finally {
