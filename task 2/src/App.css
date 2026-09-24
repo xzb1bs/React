@@ -22,7 +22,7 @@
 .header img {
   width: 280px;          /* ещё больше */
   height: 280px;
-  border-radius: 50%;
+  border-radius: 10%;
   object-fit: cover;
   border: 8px solid #e2e8f0;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);

@@ -7,7 +7,6 @@ function Contact() {
           <a 
             href="https://t.me/xzb1bs" 
             target="_blank" 
-            rel="noopener noreferrer"
             className="contact-item"
           >
             <span>📱</span>
@@ -20,7 +19,6 @@ function Contact() {
           <a 
             href="https://github.com/xzb1bs" 
             target="_blank" 
-            rel="noopener noreferrer"
             className="contact-item"
           >
             <span>💻</span>
