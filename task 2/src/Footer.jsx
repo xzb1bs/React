@@ -2,7 +2,7 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="container">
-        © {new Date().getFullYear()} я крутой
+        © 2026 я крутой
       </div>
     </footer>
   );
