@@ -1,6 +1,6 @@
 function Team() {
   return (
-    <section className="section">
+    <section className="team">
       <div className="container">
         <h2>My Team</h2>
         <div className="team-photo">
