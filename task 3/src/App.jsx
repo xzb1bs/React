@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import Header from './components/Controls/Header';
-import Controls from './components/Controls/Controls';
-import AnimeList from './components/Controls/AnimeList';
+import Header from './components/Header';
+import Controls from './components/Controls';
+import AnimeList from './components/AnimeList';
 import './App.css';
 
 const initialList = [
