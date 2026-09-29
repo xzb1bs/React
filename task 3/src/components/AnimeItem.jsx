@@ -3,15 +3,13 @@ import { useState } from 'react';
 function AnimeItem({ item, onRemove, onChangeStatus }) {
   console.log(`AnimeItem rendered: ${item.title}`);
 
-  // Локальное состояние
   const [isExpanded, setIsExpanded] = useState(false);
   const [score, setScore] = useState(0);
 
-  // Для сброса локального состояния
   const [resetKey, setResetKey] = useState(0);
 
   const handleReset = () => {
-    setResetKey((prev) => prev + 1); // меняем key → React создаёт компонент заново
+    setResetKey((prev) => prev + 1); 
   };
 
   return (
