@@ -1,0 +1,52 @@
+:root {
+  font-family: 'Trebuchet MS', 'Yu Gothic', sans-serif;
+  color: #282a31;
+  background: #f6f0e8;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --ink: #282a31;
+  --muted: #77747a;
+  --paper: #fffaf2;
+  --coral: #d94f45;
+  --coral-dark: #b83c35;
+  --teal: #357c78;
+  --line: rgba(55, 47, 44, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  min-height: 100%;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #eee4d9;
+  background-image:
+    linear-gradient(rgba(248, 242, 232, 0.78), rgba(248, 242, 232, 0.88)),
+    url('/manga.jpg');
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid rgba(53, 124, 120, 0.45);
+  outline-offset: 2px;
+}
