@@ -5,11 +5,16 @@ function AnimeItem({ item, onRemove, onChangeStatus }) {
 
   const [isExpanded, setIsExpanded] = useState(false);
   const [score, setScore] = useState(0);
-
-  const [resetKey, setResetKey] = useState(0);
+  const [resetKey] = useState(0);
 
   const handleReset = () => {
-    setResetKey((prev) => prev + 1); 
+    // setResetKey((prev) => prev + 1);
+    scoreReset(); 
+
+  };
+
+  const scoreReset = () => {
+    setScore(0);
   };
 
   return (
@@ -52,7 +57,7 @@ function AnimeItem({ item, onRemove, onChangeStatus }) {
         </select>
 
         <button onClick={handleReset} className="reset-btn">
-          Reset Local State
+          Reset My Score
         </button>
 
         <button onClick={() => onRemove(item.id)} className="delete-btn">

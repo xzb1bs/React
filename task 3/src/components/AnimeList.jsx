@@ -11,7 +11,7 @@ function AnimeList({ items, onRemove, onChangeStatus }) {
     <div className="anime-list">
       {items.map((item) => (
         <AnimeItem
-          key={item.id}                 // стабильный key
+          key={item.id}                 
           item={item}
           onRemove={onRemove}
           onChangeStatus={onChangeStatus}
