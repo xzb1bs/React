@@ -21,8 +21,9 @@ function App() {
   const [reloadKey, setReloadKey] = useState(0);
 
 
+  // первый useEffect для загрузки списка элементов
   useEffect(() => {
-    let cancelled = false;
+    let cleanup = false;
 
     async function loadList() {
       setListLoading(true);
@@ -30,15 +31,15 @@ function App() {
 
       try {
         const result = await getItemsList('?limit=50');
-        if (!cancelled) {
+        if (!cleanup) {
           setItems(result.data);
         }
       } catch (err) {
-        if (!cancelled) {
+        if (!cleanup) {
           setListError(err.message);
         }
       } finally {
-        if (!cancelled) {
+        if (!cleanup) {
           setListLoading(false);
         }
       }
@@ -47,17 +48,18 @@ function App() {
     loadList();
 
     return () => {
-      cancelled = true;
+      cleanup = true;
     };
   }, [reloadKey]);
 
 
+  // второй useEffect для загрузки деталей выбранного элемента
   useEffect(() => {
     if (selectedId === null) {
       return;
     }
 
-    let cancelled = false;
+    let cleanup = false;
 
     async function loadDetails() {
       setDetailsLoading(true);
@@ -66,15 +68,15 @@ function App() {
 
       try {
         const item = await getItem(selectedId);
-        if (!cancelled) {
+        if (!cleanup) {
           setDetails(item);
         }
       } catch (err) {
-        if (!cancelled) {
+        if (!cleanup) {
           setDetailsError(err.message);
         }
       } finally {
-        if (!cancelled) {
+        if (!cleanup) {
           setDetailsLoading(false);
         }
       }
@@ -83,7 +85,9 @@ function App() {
     loadDetails();
 
     return () => {
-      cancelled = true;
+      cleanup = true;
+      console.log('cleanup')
+      console.log('cleanup selectedId:', selectedId)
     };
   }, [selectedId]);
 

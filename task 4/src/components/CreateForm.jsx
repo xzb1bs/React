@@ -31,7 +31,7 @@ function CreateForm({ onCreate }) {
       status: 'Planned',
       episodes: '',
       score: 0,
-      year: 2024,
+      year: 2026,
       genre: '',
     });
     setOpen(false);

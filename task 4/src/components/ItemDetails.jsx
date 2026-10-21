@@ -5,7 +5,7 @@ function ItemDetails({
   loading,
   error,
   actionLoading,
-  onChangeStatus,
+  // onChangeStatus,
   onEdit,
 }) {
   const [editMode, setEditMode] = useState(false);
@@ -176,7 +176,7 @@ function ItemDetails({
               Edit
             </button>
 
-            <select
+            {/* <select
               value={details.status || 'Planned'}
               onChange={(e) => onChangeStatus(e.target.value)}
               disabled={actionLoading}
@@ -185,7 +185,7 @@ function ItemDetails({
               <option value="Watching">Watching</option>
               <option value="Completed">Completed</option>
               <option value="Dropped">Dropped</option>
-            </select>
+            </select> */}
 
             {actionLoading && <span className="action-loading">Updating...</span>}
           </div>
