@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
+import useItemsCount from '../hooks/useItemsCount';
 
 function Home() {
+  const { count, loading } = useItemsCount();
+
   return (
     <section className="page home-page">
       <div className="hero">
@@ -17,10 +20,14 @@ function Home() {
             <Link to="/about" className="btn ghost">About</Link>
           </div>
         </div>
-        <div className="hero-visual" aria-hidden="true">
+        <div className="hero-visual">
           <div className="hero-card">
-            <span className="hero-emoji">📚</span>
-            <strong>100+ titles</strong>
+            <img
+              src="/allanime.jpg"
+              alt="Collection of anime and manga"
+              className="home-image"
+            />
+            <strong>{loading ? 'Loading catalog…' : `${count} titles`}</strong>
             <span>Search · Filter · Paginate</span>
           </div>
         </div>
