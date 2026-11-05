@@ -518,7 +518,7 @@
   font-size: 0.82rem;
   line-height: 1.4;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  /* -webkit-line-clamp: 2; */
 }
 
 .item-list li.library-card {
