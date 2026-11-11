@@ -53,14 +53,14 @@ export function AuthProvider({ children }) {
     };
   }, []);
 
-  async function runAuthAction(action) {
+  async function runAuthAction(action, method = 'email') {
     setAuthError('');
     try {
       return await action();
     } catch (error) {
       setAuthError(
         isFirebaseConfigured
-          ? getAuthErrorMessage(error)
+          ? getAuthErrorMessage(error, method)
           : FIREBASE_SETUP_MESSAGE,
       );
       return null;
@@ -78,7 +78,7 @@ export function AuthProvider({ children }) {
     login: (email, password) => runAuthAction(
       () => signInWithEmail(email, password),
     ),
-    googleLogin: () => runAuthAction(signInWithGoogle),
+    googleLogin: () => runAuthAction(signInWithGoogle, 'google'),
     logout: () => runAuthAction(signOutUser),
   };
 

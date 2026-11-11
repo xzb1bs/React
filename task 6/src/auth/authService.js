@@ -43,7 +43,11 @@ export function signOutUser() {
   return signOut(getAuthInstance());
 }
 
-export function getAuthErrorMessage(error) {
+export function getAuthErrorMessage(error, method = 'email') {
+  if (method === 'google' && error?.code === 'auth/invalid-credential') {
+    return 'Google sign-in was rejected. Check the Google provider and OAuth configuration in Firebase Console.';
+  }
+
   const messages = {
     'auth/email-already-in-use': 'This email is already registered.',
     'auth/configuration-not-found': 'Firebase Authentication is not enabled for this Firebase project.',
