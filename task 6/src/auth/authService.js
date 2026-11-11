@@ -46,8 +46,10 @@ export function signOutUser() {
 export function getAuthErrorMessage(error) {
   const messages = {
     'auth/email-already-in-use': 'This email is already registered.',
+    'auth/configuration-not-found': 'Firebase Authentication is not enabled for this Firebase project.',
     'auth/invalid-credential': 'Email or password is incorrect.',
     'auth/invalid-email': 'Enter a valid email address.',
+    'auth/invalid-api-key': 'The Firebase API key is invalid. Check the Firebase web app settings.',
     'auth/network-request-failed': 'Network error. Check your connection and try again.',
     'auth/operation-not-allowed': 'This sign-in method is not enabled in Firebase.',
     'auth/popup-closed-by-user': 'The Google sign-in window was closed before finishing.',

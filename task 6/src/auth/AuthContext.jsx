@@ -17,9 +17,7 @@ const FIREBASE_SETUP_MESSAGE =
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(isFirebaseConfigured);
-  const [authError, setAuthError] = useState(
-    isFirebaseConfigured ? '' : FIREBASE_SETUP_MESSAGE,
-  );
+  const [authError, setAuthError] = useState('');
 
   useEffect(() => {
     if (!isFirebaseConfigured) {
@@ -60,7 +58,11 @@ export function AuthProvider({ children }) {
     try {
       return await action();
     } catch (error) {
-      setAuthError(getAuthErrorMessage(error));
+      setAuthError(
+        isFirebaseConfigured
+          ? getAuthErrorMessage(error)
+          : FIREBASE_SETUP_MESSAGE,
+      );
       return null;
     }
   }
