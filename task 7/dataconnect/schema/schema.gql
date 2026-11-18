@@ -1,0 +1,35 @@
+type User @table {
+  username: String!
+  email: String!
+  avatarUrl: String
+  bio: String
+}
+
+type Title @table {
+  titleName: String!
+  type: String!
+  coverImageUrl: String!
+  releaseYear: Int
+  description: String
+  totalEpisodesOrChapters: Int
+}
+
+type LibraryEntry @table {
+  status: String!
+  progressCount: Int!
+  personalRating: Int
+  startDate: Date
+  endDate: Date
+  user: User!
+  title: Title!
+}
+
+type Genre @table {
+  genreName: String!
+  description: String
+}
+
+type TitleGenre @table(key: ["title", "genre"]) {
+  title: Title!
+  genre: Genre!
+}

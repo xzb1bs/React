@@ -1,0 +1,19 @@
+mutation SeedData @transaction @auth(level: USER) {
+  user_insertMany(data: [
+    { username: "alice", email: "alice@example.com", avatarUrl: "https://example.com/alice.jpg", bio: "Anime lover" },
+    { username: "bob", email: "bob@example.com", avatarUrl: "https://example.com/bob.jpg", bio: "Reading manga" },
+    { username: "charlie", email: "charlie@example.com", avatarUrl: "https://example.com/charlie.jpg", bio: "Just here for the vibes" }
+  ])
+  
+  title_insertMany(data: [
+    { titleName: "Fullmetal Alchemist", type: "Anime", coverImageUrl: "https://example.com/fma.jpg", releaseYear: 2009, description: "A classic adventure", totalEpisodesOrChapters: 64 },
+    { titleName: "One Piece", type: "Manga", coverImageUrl: "https://example.com/op.jpg", releaseYear: 1997, description: "Pirate journey", totalEpisodesOrChapters: 1100 },
+    { titleName: "Attack on Titan", type: "Anime", coverImageUrl: "https://example.com/aot.jpg", releaseYear: 2013, description: "Humanity vs Titans", totalEpisodesOrChapters: 89 }
+  ])
+  
+  genre_insertMany(data: [
+    { genreName: "Action", description: "High energy sequences" },
+    { genreName: "Fantasy", description: "Magical worlds" },
+    { genreName: "Adventure", description: "Epic journeys" }
+  ])
+}

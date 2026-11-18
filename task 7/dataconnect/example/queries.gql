@@ -1,0 +1,119 @@
+mutation InsertUser @auth(level: USER) {
+  user_insert(data: {
+    id_expr: "auth.uid",
+    username: "new_username",
+    email: "user@example.com"
+  })
+}
+
+mutation UpdateUser @auth(level: USER) {
+  user_update(key: {id_expr: "auth.uid"}, data: {bio: "Updated bio"})
+}
+
+mutation DeleteUser @auth(level: USER) {
+  user_delete(key: {id_expr: "auth.uid"})
+}
+
+query GetUser @auth(level: USER) {
+  user(key: {id_expr: "auth.uid"}) {
+    username email bio
+  }
+}
+
+query ListUsers @auth(level: PUBLIC, insecureReason: "Publicly accessible user profiles are required for social discovery.") {
+  users {
+    username avatarUrl
+  }
+}
+
+mutation InsertTitle @auth(level: PUBLIC, insecureReason: "Public title catalog.") {
+  title_insert(data: {titleName: "Neon Genesis Evangelion", type: "Anime", coverImageUrl: "url"})
+}
+
+mutation UpdateTitle @auth(level: PUBLIC, insecureReason: "Public title catalog.") {
+  title_update(id: "00000000-0000-0000-0000-000000000000", data: {description: "Updated description"})
+}
+
+mutation DeleteTitle @auth(level: PUBLIC, insecureReason: "Public title catalog.") {
+  title_delete(id: "00000000-0000-0000-0000-000000000000")
+}
+
+query GetTitle @auth(level: PUBLIC, insecureReason: "Public title catalog.") {
+  title(id: "00000000-0000-0000-0000-000000000000") {
+    titleName description
+  }
+}
+
+query ListTitles @auth(level: PUBLIC, insecureReason: "Public title catalog.") {
+  titles {
+    titleName releaseYear
+  }
+}
+
+mutation InsertLibraryEntry @auth(level: USER) {
+  libraryEntry_insert(data: {
+    status: "Watching",
+    progressCount: 1,
+    userId_expr: "auth.uid",
+    titleId: "00000000-0000-0000-0000-000000000000"
+  })
+}
+
+mutation UpdateLibraryEntry @auth(level: USER) {
+  libraryEntry_update(key: {id: "00000000-0000-0000-0000-000000000000"}, data: {progressCount: 2})
+}
+
+mutation DeleteLibraryEntry @auth(level: USER) {
+  libraryEntry_delete(key: {id: "00000000-0000-0000-0000-000000000000"})
+}
+
+query GetLibraryEntry @auth(level: USER) {
+  libraryEntry(key: {id: "00000000-0000-0000-0000-000000000000"}) {
+    status progressCount
+  }
+}
+
+query ListLibraryEntries @auth(level: USER) {
+  libraryEntries(where: {userId: {eq_expr: "auth.uid"}}) {
+    status title { titleName }
+  }
+}
+
+mutation InsertGenre @auth(level: PUBLIC, insecureReason: "Public genre list.") {
+  genre_insert(data: {genreName: "Sci-Fi"})
+}
+
+mutation UpdateGenre @auth(level: PUBLIC, insecureReason: "Public genre list.") {
+  genre_update(id: "00000000-0000-0000-0000-000000000000", data: {description: "Science Fiction"})
+}
+
+mutation DeleteGenre @auth(level: PUBLIC, insecureReason: "Public genre list.") {
+  genre_delete(id: "00000000-0000-0000-0000-000000000000")
+}
+
+query GetGenre @auth(level: PUBLIC, insecureReason: "Public genre list.") {
+  genre(id: "00000000-0000-0000-0000-000000000000") {
+    genreName
+  }
+}
+
+query ListGenres @auth(level: PUBLIC, insecureReason: "Public genre list.") {
+  genres {
+    genreName
+  }
+}
+
+mutation InsertTitleGenre @auth(level: PUBLIC, insecureReason: "Public relation.") {
+  titleGenre_insert(data: {titleId: "00000000-0000-0000-0000-000000000000", genreId: "00000000-0000-0000-0000-000000000000"})
+}
+
+mutation DeleteTitleGenre @auth(level: PUBLIC, insecureReason: "Public relation.") {
+  titleGenre_delete(key: {titleId: "00000000-0000-0000-0000-000000000000", genreId: "00000000-0000-0000-0000-000000000000"})
+}
+
+query ListTitleGenres @auth(level: PUBLIC, insecureReason: "Public relation.") {
+  titleGenres {
+    title { titleName }
+    genre { genreName }
+  }
+}
