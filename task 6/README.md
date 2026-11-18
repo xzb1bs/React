@@ -1,8 +1,8 @@
-# Task 6 — Anime & Manga Library PWA
+# Task 6 — Anime & Manga Library
 
 This project extends Task 5. It keeps the catalog, URL-based search and filters,
-sorting, pagination, title details, dashboard, and Firebase authentication,
-and adds installable PWA and offline support.
+sorting, pagination, title details, and dashboard, and adds Firebase
+authentication and API response caching.
 
 ## Run locally
 
@@ -46,31 +46,15 @@ session is restored. `/profile` is protected and sends signed-out visitors to
 Firestore document `users/{uid}`. Firestore rules allow each signed-in user to
 read and update only their own profile.
 
-## PWA and offline support
+## Caching
 
-The web app manifest and install icons are in `public/`. The Vite build creates
-a versioned `dist/sw.js` and precaches the app shell, hashed JS/CSS bundles,
-icons, catalog artwork, and the standalone offline page. The worker removes old
-versioned shell and static caches when it activates. In-app navigation falls
-back to the cached shell, and failed document navigation uses `offline.html`.
+`src/services/service.js` caches title-list responses by their normalized query
+parameters and title details by ID for 30 seconds. Concurrent requests for the
+same key share one request. Expired entries are fetched again. Creating,
+updating, or deleting a title clears the list and detail caches. A generation
+check prevents a request started before an invalidation from writing old data
+back into the cache. Screens also ignore results from requests that are no
+longer current.
 
-Static files use cache-first behavior. Public `/api/public/titles` GET requests
-use network-first behavior and are cached only when they return successful JSON
-without private/no-store cache directives or authorization headers. Runtime
-caches are bounded and expire. Firebase auth and profile routes are excluded.
-The existing catalog remains the Task 5 localStorage-backed fake API; the list
-and detail responses it returns are also saved in Cache Storage for seven days
-(up to 50 entries), so the catalog remains available when the browser is
-offline. The app identifies saved catalog data and reports connection status.
-
-When a new build is available, the app offers an **Update now** button. The
-waiting worker activates only after the user selects it, then the open app
-reloads onto the new version. Service workers require HTTPS in deployment
-(Firebase Hosting provides HTTPS); `localhost` is also supported for local
-testing.
-
-To check offline behavior, build and serve the production output, open the app
-once while online, then use the browser’s developer tools to switch to offline
-mode and reload a previously visited route such as `/titles`. The cached app
-shell and catalog should remain available; an uncached navigation should show
-the offline page.
+The catalog is still the Task 5 localStorage-backed fake API; cached responses
+are kept in memory and are cleared on a page refresh.

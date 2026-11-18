@@ -13,7 +13,6 @@ const Login = lazy(() => import('./pages/Login'));
 const Signup = lazy(() => import('./pages/Signup'));
 const Profile = lazy(() => import('./pages/Profile'));
 const NotFound = lazy(() => import('./pages/NotFound'));
-const Offline = lazy(() => import('./pages/Offline'));
 
 function PageFallback() {
   return <div className="page state" style={{ padding: '2rem' }}>Loading page…</div>;
@@ -32,7 +31,6 @@ function App() {
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<Signup />} />
-            <Route path="offline" element={<Offline />} />
             <Route element={<ProtectedRoute />}>
               <Route path="profile" element={<Profile />} />
             </Route>
