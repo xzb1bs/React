@@ -6,6 +6,7 @@ function Dashboard() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isCached, setIsCached] = useState(false);
   const [typeFilter, setTypeFilter] = useState('');
 
   useEffect(() => {
@@ -15,7 +16,10 @@ function Dashboard() {
       setError(null);
       try {
         const result = await getItemsList('?limit=200&page=1');
-        if (!cancelled) setItems(result.data || []);
+        if (!cancelled) {
+          setItems(result.data || []);
+          setIsCached(result.fromCache === true);
+        }
       } catch (err) {
         if (!cancelled) setError(err.message);
       } finally {
@@ -77,6 +81,7 @@ function Dashboard() {
         <h1>Dashboard</h1>
         <p className="muted">Live stats from the catalog API</p>
       </div>
+      {isCached && <p className="cached-data" role="status">Statistics are based on saved catalog data.</p>}
 
       <div className="dashboard-filter">
         <label>

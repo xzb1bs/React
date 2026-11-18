@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import NavBar from './NavBar';
 import { useAuth } from '../auth/useAuth';
+import PwaStatus from './PwaStatus';
 
 function RootLayout() {
   const { authError, clearAuthError } = useAuth();
@@ -8,6 +9,7 @@ function RootLayout() {
   return (
     <div className="app">
       <NavBar />
+      <PwaStatus />
       {authError && (
         <div className="auth-error" role="alert">
           <span>{authError}</span>

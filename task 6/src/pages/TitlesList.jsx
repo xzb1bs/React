@@ -12,6 +12,7 @@ function TitlesList() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [isCached, setIsCached] = useState(false);
   const [meta, setMeta] = useState({ total: 0, totalPages: 1 });
 
   const search = searchParams.get('search') || '';
@@ -47,6 +48,7 @@ function TitlesList() {
         const result = await getItemsList(`?${params.toString()}`);
         if (!cancelled) {
           setItems(result.data);
+          setIsCached(result.fromCache === true);
           setMeta({
             total: result.total,
             totalPages: Math.max(1, result.totalPages),
@@ -71,6 +73,7 @@ function TitlesList() {
           {meta.total} title{meta.total === 1 ? '' : 's'} · filters synced to URL
         </p>
       </div>
+      {isCached && <p className="cached-data" role="status">Showing saved catalog data from this device.</p>}
 
       <div className="library-layout">
         <aside className="sidebar tools">

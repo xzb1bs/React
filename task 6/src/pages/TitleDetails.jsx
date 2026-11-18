@@ -90,6 +90,7 @@ function TitleDetails() {
       </div>
 
       <article className="details-card">
+        {item.fromCache && <p className="cached-data" role="status">Showing saved title details from this device.</p>}
         <header className="details-header">
           <h1>{item.name}</h1>
           <span className={`badge ${(item.status || '').toLowerCase()}`}>
